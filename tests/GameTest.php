@@ -4,8 +4,27 @@ namespace Bowling;
 
 class GameTest extends \PHPUnit_Framework_TestCase
 {
-
+    /** @var Game $game */
     private $game;
+
+    /**
+     * SetUp for each test
+     */
+    protected function setUp()
+    {
+        $this->game = new Game();
+    }
+
+    /**
+     * @param int $num
+     * @param int $pins
+     */
+    public function rollMany($num, $pins)
+    {
+        for ($i = 0; $i < $num; $i++) {
+            $this->game->roll($pins);
+        }
+    }
 
     public function testGame()
     {
@@ -15,27 +34,7 @@ class GameTest extends \PHPUnit_Framework_TestCase
 
     public function testGameAllOnes()
     {
-
         $this->rollMany(20, 1);
         $this->assertSame(20, $this->game->score());
-    }
-
-    /**
-     * @return Game
-     */
-    public function setUp()
-    {
-        $this->game = new Game();
-    }
-
-    /**
-     * @param $n
-     * @param $pins
-     */
-    protected function rollMany($n, $pins)
-    {
-        for ($i = 0; $i < $n; $i++) {
-            $this->game->roll($pins);
-        }
     }
 }
