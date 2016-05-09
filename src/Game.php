@@ -22,7 +22,7 @@ class Game
     }
 
     /**
-     * @return int Score
+     * @return int
      */
     public function score()
     {

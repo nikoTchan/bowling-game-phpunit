@@ -16,17 +16,17 @@ class GameTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param int $num
+     * @param int $rolls
      * @param int $pins
      */
-    public function rollMany($num, $pins)
+    protected function rollMany($rolls, $pins)
     {
-        for ($i = 0; $i < $num; $i++) {
+        for ($i = 0; $i < $rolls; $i++) {
             $this->game->roll($pins);
         }
     }
 
-    public function testGame()
+    public function testGameGutterGame()
     {
         $this->rollMany(20, 0);
         $this->assertSame(0, $this->game->score());
